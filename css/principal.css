@@ -43,7 +43,7 @@
 
             @font-face {    /*Carga un archivo de fuente, viene bien para usar fuentes que no todxs tienen instaladas en su PC*/
             font-family: "Lucida";      /*Le asigna un nombre a la fuente para referise a ella durante el resto del documento*/
-            src: url("font/lucida-bright.ttf");     /*La ruta donde se encuentra el archivo de la fuente*/
+            src: url("../font/lucida-bright.ttf");     /*La ruta donde se encuentra el archivo de la fuente*/
             }
 
             * {     /*Afecta a todos los elementos del documento*/
