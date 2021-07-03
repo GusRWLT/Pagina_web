@@ -1,0 +1,71 @@
+/*Los que empiezan por # fueron llamados por el id del objeto y los que empiezan por . lo hacen por la clase. Si sólo es el nombre de la etiqueta, afecta a todos los objetos que la usen*/
+            body {
+                margin: 0;      /*Quita por defecto todos los márgenes del documento*/
+                background-image: url("Logo/logo donar.png");   /*Cargo una imagen de fondo*/
+                background-size: 700px 700px;
+                background-repeat: no-repeat;   /*Esto hace que no se cree un efecto mosaico*/
+                background-position: 50% -50%;
+            }
+
+            #boton_header {
+                padding: 5px;
+                border-style: solid;
+                border-color: skyblue;      /*Color del borde*/
+                border-radius: 6px;     /*Bordes redondeados*/
+                background-color: skyblue;      /*Cambia el color de fondo*/
+                width: 150px;       /*El largo del objeto (en píxeles)*/
+                margin-right: 10px;     /*Define la distancia entre un objeto y otro por el lado derecho*/
+            }
+
+            #boton_header:hover {   /*"hover" es la propiedad cuando se le pasa el mouse por encima*/
+                background-color: rgb(44, 168, 218);
+                border-color: rgb(44, 168, 218);
+                cursor: pointer;
+            }
+
+            #cabecera_principal {
+                background-color: white;
+                text-align: center;     /*Centro los elementos dentro de la cabecera*/
+                padding-top: 15px;
+                padding-bottom: 15px;   /*Aumenta el tamaño vertical de la cabecera. INVESTIGAR BIEN "PADDING" y "MARGIN" PORQUE SE VA A USAR MUCHO*/
+                border-bottom-style: solid;     /*Agrega un borde inferior a la cabecera con la propiedad "solid"*/
+                border-width: 2px;      /*Define el grosor del borde*/
+            }
+
+            #enlaces_ext {
+                float: right;   /*Ubica el elemento al lado derecho sin ocupar todo el espacio horizontal de la página*/
+                padding: 15px;
+            }
+
+            #filtros {
+                padding: 15px;
+            }
+
+            @font-face {    /*Carga un archivo de fuente, viene bien para usar fuentes que no todxs tienen instaladas en su PC*/
+            font-family: "Lucida";      /*Le asigna un nombre a la fuente para referise a ella durante el resto del documento*/
+            src: url("font/lucida-bright.ttf");     /*La ruta donde se encuentra el archivo de la fuente*/
+            }
+
+            * {     /*Afecta a todos los elementos del documento*/
+                font-family: "Lucida";      /*El tipo de fuente*/
+                font-size: 100%;
+            }
+
+            #publicaciones {
+                background-image: url("Logo/tabla.png");     /*Carga la imagen de fondo de las publicaciones. Los archivos no deberían de tener espacios ni tildes*/
+                background-size: 300px;
+                background-position: center;
+                float: left;    /*Lo mismo que el de #enlaces, pero a la izquierda*/
+                margin: 10px;
+                height: 290px;
+                width: 215px;
+                padding-bottom: 10px;
+            }
+
+            #btn_donar {
+                text-align: center;
+            }
+
+            #texto {
+                padding-top: 85px;
+            }
