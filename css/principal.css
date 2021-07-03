@@ -1,7 +1,7 @@
 /*Los que empiezan por # fueron llamados por el id del objeto y los que empiezan por . lo hacen por la clase. Si sólo es el nombre de la etiqueta, afecta a todos los objetos que la usen*/
             body {
                 margin: 0;      /*Quita por defecto todos los márgenes del documento*/
-                background-image: url("Logo/logo donar.png");   /*Cargo una imagen de fondo*/
+                background-image: url("../Logo/logo donar.png");   /*Cargo una imagen de fondo*/
                 background-size: 700px 700px;
                 background-repeat: no-repeat;   /*Esto hace que no se cree un efecto mosaico*/
                 background-position: 50% -50%;
@@ -52,7 +52,7 @@
             }
 
             #publicaciones {
-                background-image: url("Logo/tabla.png");     /*Carga la imagen de fondo de las publicaciones. Los archivos no deberían de tener espacios ni tildes*/
+                background-image: url("../Logo/tabla.png");     /*Carga la imagen de fondo de las publicaciones. Los archivos no deberían de tener espacios ni tildes*/
                 background-size: 300px;
                 background-position: center;
                 float: left;    /*Lo mismo que el de #enlaces, pero a la izquierda*/
