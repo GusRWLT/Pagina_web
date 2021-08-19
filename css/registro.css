@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    text-align: center;
+    margin: auto;
+    margin-bottom: 100px;
+}
+
+.textbox {
+    width: 300px;
+    height: 20px;
+}
+
+.combobox {
+    width: 300px;
+    height: 27px;
+}
+
+.datebox {
+    height: 20px;
+}
+
+.alerta {
+    color: red;
+}
