@@ -29,10 +29,18 @@
 <body>
     <h1>Inicio de sesión</h1>
     <form name="login" action="codigo/cod_ingreso.php" method="POST">
-        <input type="text" name="dni" class="textbox" placeholder="DNI"><br><br>
-        <input type="text" name="pass" class="textbox" placeholder="Contraseña"><br><br>
+        <input type="text" name="dni" class="textbox" placeholder="DNI" maxlength="8"><br><br>
+        <input type="password" name="pass" class="textbox" placeholder="Contraseña" maxlength="50"><br><br>
 
-        <input type="submit" name="ingreso" class="frm_boton" value="Ingresar">
+        <input type="submit" name="ingreso" class="frm_boton" value="Ingresar"><br><br>
+
+        <?php
+            session_start();
+            if(isset($_SESSION['error'])) {
+                echo $_SESSION['error'];
+                $_SESSION['error'] = NULL;
+            }
+        ?>
     </form>
 </body>
 </html>
