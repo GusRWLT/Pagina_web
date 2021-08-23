@@ -1,31 +1,44 @@
 <?php
-    if (!empty($_POST['dni']) && !empty($_POST['pass'])) {
-        include ("../conexion.php");
-
+    session_start();    //Inicio una sesión para pasar variables a otros archivos
+    if (!empty($_POST['dni']) && !empty($_POST['pass'])) {      //Comprueba que los campos DNI y Contraseña no estén vacíos
+        include("../conexion.php");     //Incluyo el archivo de la conexión a la BD
+        
+        //Cargo los datos de los campos en variables
         $dni = $_POST['dni'];
         $pass = $_POST['pass'];
 
-        $query = "SELECT USU_PASS FROM usuarios WHERE USU_DNI='" . $dni . "' AND USU_PASS='" . $pass . "'";
-        $result = mysqli_query($conexion, $query);
-
-        if ($result) {      //Comprueba si la consulta se ejecutó correctamente
-            $row = mysqli_num_rows($result);    //Cuenta el número de filas seleccionadas de la consulta select y las guarda en la variable 'row'
-            if ($row) {     //Comprueba si encontró al menos una fila, o sea si encontró un usuario con esos datos (DNI y contraseña)
-                session_start();       //Uso la función "session_start" para iniciar sesión
-                $_SESSION['user'] = $_POST['dni'];      //Guardo el campo dni en la sesión actual como una variable superglobal
-                header("location:../index.php");    //Redirije a la página principal
+        //Cargo la consulta SQL en una variable
+        $query = "SELECT USU_ID, USU_NOMBRE, ROL_ID FROM usuarios WHERE USU_DNI='$dni' AND USU_PASS='$pass'";
+        
+        if ($resultado = $conexion->query($query)) {    //Realiza la consulta y la guarda en la variable "resultado", mientras verifica que se haya ejecutado bien
+            if ($resultado->num_rows > 0) {     //Cuenta el número de filas de la consulta, si son mayores que 0, significa que el usuario existe
+                if ($fila = $resultado->fetch_assoc()) {       //Trae los resultados de la consulta y los guarda en un array
+                    $_SESSION['id'] = $fila['USU_ID'];
+                    $_SESSION['nombre'] = $fila['USU_NOMBRE'];
+                    $_SESSION['rol'] = $fila['ROL_ID'];
+                    header("location:../index.php");        //Redirije a la página principal
+                } else {
+                    $msg_error = "Se ha producido un error. Inténtelo más tarde.";
+                    header("location:../ingreso.php");
+                }
             } else {
-                $msg_error = "Error al iniciar sesión: compruebe que el usuario y la contraseña estén correctos.";      //Guardo un mensaje de error en una variable para luego mostrarla en la página de inicio de sesión
-                header("location:../ingreso.php");      //Me redirije de vuelta a la página de inicio de sesión
+                $msg_error = "No se encontraron usuarios con esos datos.";
+                header("location:../ingreso.php");
             }
-            mysqli_free_result($result);    //Libera la memoria asociada al resultado
         } else {
+            //echo "Error: " . $query . "<b>" . $conexion->error;
             $msg_error = "Se ha producido un error. Inténtelo más tarde.";
             header("location:../ingreso.php");
         }
-        mysqli_close($conexion);     //Cierro la conexión con la BD
+        $resultado->free();     //Libera el espacio en memoria de la variable "resultado"
+        $conexion->close();     //Cierra la conexión con la BD
     } else {
-        $msg_error = "Debe completar todos los campos.";
+        $msg_error = "Debe ingresar el DNI y la contraseña.";
         header("location:../ingreso.php");
+    }
+
+    //Comprueba si la variable "msg_error" no está vacía y guarda su contenido en una variable superglobal 
+    if (isset($msg_error)) {        
+        $_SESSION['error'] = $msg_error;
     }
 ?>
