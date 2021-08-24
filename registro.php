@@ -9,17 +9,18 @@
 </head>
 
 <body>
+    <header id="cabecera_principal">
+        <button id="boton_header" onclick="location.href='ingreso.php';">Iniciar sesión</button>
+        <button id="boton_header" onclick="location.href='registro.php';">Registrarse</button>
+    </header>
 
     <?php 
         include("consultas.php");    //Se incluye el archivo donde se realizó la conexión con la BD a este mismo archivo
     ?>
 
-    <header>
-
-    </header>
-
     <h1>Registro</h1>  
     <!--Crea un formulario con el método "post" para enviar datos de HTML a PHP-->
+    <div class="registro">
     <form action="codigo/cod_registro.php" method="post" autocomplete="off">     
 
         <label for="apellido">Apellido<label><br>
@@ -72,6 +73,7 @@
             }
         ?>
     </form>
+    </div>
 
 </body>
 </html>
