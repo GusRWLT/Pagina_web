@@ -1,55 +1,4 @@
-h1 {
-    text-align: center;
-    font-size: 170%;
-}
-
-form {
-    text-align: center;
-    margin: auto;
-    margin-bottom: 100px;
-}
-
-.textbox {
-    width: 300px;
-    height: 20px;
-    border-style: solid;
-    border-radius: 5px;
-}
-
-.combobox {
-    width: 300px;
-    height: 27px;
-    background-color: white;
-    border-style: solid;
-    border-radius: 5px;
-}
-
-.datebox {
-    height: 20px;
-    border-style: solid;
-    border-radius: 5px;
-}
-
-.boton {
-    height: 30px;
-    width: 300px;
-    background-color: rgb(70, 70, 255);
-    border-color: rgb(70, 70, 255);
-    border-style: solid;
-    border-radius: 5px;
-    color: white;
-}
-
-.boton:hover {
-    background-color: rgb(0, 0, 255);
-    border-color: rgb(0, 0, 255);
-    cursor: pointer;
-}
-
-.alerta {
-    color: red;
-}
-
+/*Los que empiezan por # fueron llamados por el id del objeto y los que empiezan por . lo hacen por la clase. Si sólo es el nombre de la etiqueta, afecta a todos los objetos que la usen*/
 body {
     margin: 0;      /*Quita por defecto todos los márgenes del documento*/
     background-image: url("../img/logo donar.png");   /*Cargo una imagen de fondo*/
@@ -57,7 +6,6 @@ body {
     background-repeat: no-repeat;   /*Esto hace que no se cree un efecto mosaico*/
     background-position: center;
     background-attachment: fixed;
-    /*font-family: Arial, Helvetica, sans-serif;*/
 }
 
 #boton_header {
@@ -90,16 +38,51 @@ body {
     height:35px;
 }
 
-
-.registro {
-    margin-top: 20px;
-    padding: 2px 0px 0px 0px;
-    background-color: rgba(255, 255, 255, 0.753);
+#enlaces_ext {
+    float: right;   /*Ubica el elemento al lado derecho sin ocupar todo el espacio horizontal de la página*/
+    padding: 15px;
+    margin-top: 60px;
 }
+
+#filtros {
+    padding: 15px;
+}
+
+
+@font-face {    /*Carga un archivo de fuente, viene bien para usar fuentes que no todxs tienen instaladas en su PC*/
+font-family: "Lucida";      /*Le asigna un nombre a la fuente para referise a ella durante el resto del documento*/
+src: url("../font/lucida-bright.ttf");     /*La ruta donde se encuentra el archivo de la fuente*/
+}
+
 
 * {     /*Afecta a todos los elementos del documento*/
     font-family: Arial, Helvetica, sans-serif;      /*El tipo de fuente*/
     font-size: 100%;
+}
+
+#publicaciones {
+    background-image: url("../img/tabla.png");     /*Carga la imagen de fondo de las publicaciones. Los archivos no deberían de tener espacios ni tildes*/
+    background-size: 300px;
+    background-position: center;
+    float: left;    /*Lo mismo que el de #enlaces, pero a la izquierda*/
+    margin: 10px;
+    height: 290px;
+    width: 215px;
+    padding-bottom: 10px;
+}
+
+#btn_donar {
+    text-align: center;
+}
+
+#datos_publi {
+    padding-top: 85px;
+}
+
+select {
+    background-color: white;
+    border-style: solid;
+    border-radius: 5px;
 }
 
 .user {
@@ -120,4 +103,42 @@ span.a {
 span.a:hover {
     color: rgb(0, 181, 253);
     cursor: pointer;
+}
+
+#donar {
+    background-color: rgb(238, 26, 26);
+    border-color: rgb(238, 26, 26);
+    border-style: solid;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.navegacion {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#boton_publi {
+    background-color: skyblue;
+    border-color: skyblue;
+    border-style: solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#mensaje {
+    background-color: rgba(255, 255, 255, 0.753);
+    text-align: center;
+    font-size: large;
+    margin-top: 10%;
+    padding: 100px;
+}
+
+h1 {
+    font-size: 150%;
+}
+
+h2 {
+    font-size: 120%;
 }
