@@ -142,3 +142,36 @@ h1 {
 h2 {
     font-size: 120%;
 }
+
+.btn_volver {
+    background-color: red;
+    color: white;
+    border-color: red;
+    border-style: solid;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/*CCS para la barra de navegación*/
+.navegacion {
+    background-color: white;
+    padding: 9px 0px;
+    border-bottom-style: solid;     /*Agrega un borde inferior a la cabecera con la propiedad "solid"*/
+    border-width: 3px;      /*Define el grosor del borde*/
+    border-color: skyblue;
+    box-shadow: grey 0px 5px 10px;
+}
+
+.navegacion a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    /*margin-left: 10px;*/
+}
+
+.navegacion a:hover {
+    background-color: skyblue;
+    padding: 10px;
+    cursor: pointer;
+}

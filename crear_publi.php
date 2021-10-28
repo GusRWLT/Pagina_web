@@ -1,7 +1,12 @@
 <?php
-    session_start();    //Reaunada la sesión iniciada en el archivo "cod_registro.php" para poder recibir el mensaje de error almacenado en la variable superglobal
+    session_start();
+
+    //Guardo la fecha actual (zona horaria de Argentina) en una variable
+    date_default_timezone_set('America/Argentina/Buenos_Aires');
+    $fecha_min = date("Y-m-d");
 ?>
 
+<!--Inicio de HTML5-->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,7 +19,8 @@
 </head>
 
 <body>
-<header id="cabecera_principal">
+    <!--Cabecera de la página-->
+    <header id="cabecera_principal">
         <?php
             if (isset($_SESSION['id']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {   //Verifica que la variable superglobal "$_SESSION['id']" no esté vacía
                 if ($_SESSION['rol'] == 1) {
@@ -29,13 +35,30 @@
                     <button id="boton_header" onclick="location.href='registro.php';">Registrarse</button>	     <!--Una etiqueta button con un poco de JavaScript para crear un enlace hacia otro documento-->
                 <?php
             }
-        ?>
-		
-  
+        ?>		
     </header>
 
+    <!--Barra de navegación-->
+    <?php
+        if (isset($_SESSION['id']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
+            ?>
+                <nav class="navegacion">
+                    <a href="index.php">Inicio</a>
+                    <a href="#Perfil">Editar perfil</a>
+                    <a href="mispublis.php">Mis publicaciones</a>
+                    <a href="crear_publi.php">Crear publicación</a>
+                    <?php
+                        if ($_SESSION['rol'] != 2) {
+                            echo "<a href='listadadores.php'>Aceptar dadores</a>";
+                        }
+                    ?>
+                </nav>
+            <?php
+        }
+    ?>
+
     <?php 
-        include("consultas.php");    //Se incluye el archivo donde se realizó la conexión con la BD a este mismo archivo
+        include("consultas.php");    //Se incluye el archivo donde se realizan las consultas para llenar los combobox
     ?>
 
      
@@ -51,7 +74,7 @@
         <input type="text" name="nombre" class="textbox" maxlength="50"><br><br>
 
         <label for="dni">DNI del paciente</label><br>
-        <input type="text" name="dni" class="textbox" maxlength="8" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))""><br><br>
+        <input type="text" name="dni" class="textbox" minlength="8" maxlength="8" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))""><br><br>
 
         <label for="factor">Grupo sanguíneo del paciente</label><br>
         <select name="factor" class="combobox">
@@ -71,10 +94,11 @@
         <input type="number" name="dadores" class="textbox" min="1" max="15"><br><br>
 
         <label for="fecha_lim">Fecha límite</label><br>
-        <input type="date" name="fecha_lim" class="datebox"><br><br>
+        <input type="date" name="fecha_lim" class="datebox" min="<?php echo $fecha_min;?>"><br><br>
 
         <input type="submit" name="crear" class="boton" value="Crear"><br><br>
 
+        <!--Imprime un mensaje de error traido en la variable superglobal SESSION-->
         <div class="alerta">
             <?php
                 if (isset($_SESSION['error'])) {    //Comprueba que la variable no esté vacía

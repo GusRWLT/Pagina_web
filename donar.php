@@ -33,6 +33,26 @@
         ?>
 	</header>
 
+    <!--Barra de navegación-->
+    <?php
+        if (isset($_SESSION['id']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
+            ?>
+                <nav class="navegacion">
+                    <a href="index.php">Inicio</a>
+                    <a href="#Perfil">Editar perfil</a>
+                    <a href="mispublis.php">Mis publicaciones</a>
+                    <a href="crear_publi.php">Crear publicación</a>
+                    <?php
+                        if ($_SESSION['rol'] != 2) {
+                            echo "<a href='listadadores.php'>Aceptar dadores</a>";
+                        }
+                    ?>
+                </nav>
+            <?php
+        }
+    ?>
+
+    <!--Muestra los requisitos para poder donar-->
     <div class="cont_donar">
         <div class="requisitos">
             <p>Antes de donar, debe asegurarse de cumplir con los siguientes requisitos:</p>
@@ -49,9 +69,10 @@
             </ul>
         </div>
 
+        <!--Genero un botón para donar con datos de la publicación en la url, y un botón de cancelar para regresar al inicio-->
         <div class="cont_botones">
             <?php
-                $pub_id = $_GET['id'];
+                $pub_id = $_GET['id'];  //La función GET trae los datos guardados en la URL
                 echo "<button class=\"btn_donar\" onclick=\"location.href='codigo/cod_donar.php?id=$pub_id';\">Donar</button><button class=\"btn_donar\" onclick=\"location.href='index.php';\">Cancelar</button>";
             ?>
         </div>

@@ -2,6 +2,7 @@
     session_start();
 ?>
 
+<!--Inicio de HTML5-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,10 +34,30 @@
         ?>
 	</header>
 
+    <!--Barra de navegación-->
+    <?php
+        if (isset($_SESSION['id']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
+            ?>
+                <nav class="navegacion">
+                    <a href="index.php">Inicio</a>
+                    <a href="#Perfil">Editar perfil</a>
+                    <a href="mispublis.php">Mis publicaciones</a>
+                    <a href="crear_publi.php">Crear publicación</a>
+                    <?php
+                        if ($_SESSION['rol'] != 2) {
+                            echo "<a href='listadadores.php'>Aceptar dadores</a>";
+                        }
+                    ?>
+                </nav>
+            <?php
+        }
+    ?>
+    <!--Mensaje que se muestra después de solicitar donar en una publicación-->
     <div id="mensaje">
         <h1>¡Muchas gracias por ayudar!</h1>
         <h2>Tu solicitud para poder donar está siendo evaluada por un especialista.</h2>
-        Recibirás un correo electrónico a la brevedad notificándote de tu situación. Por favor, tenga paciencia.
+        <p>Recibirás un correo electrónico a la brevedad notificándote de tu situación. Por favor, tenga paciencia.</p>
+        <button class="btn_volver" onclick="location.href='index.php';">Volver</button>  <!--Botón para volver a la página de inicio-->
     </div>
 </body>
 </html>

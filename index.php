@@ -2,24 +2,24 @@
     session_start();    //Si hubo una sesión activa, la reanuda, sino la inicia
 ?>
 
+<!--Inicio de HTML5-->
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="utf-8">
 	<title>Donar es ayudar</title>
 	<link rel="stylesheet" href="estilos/principal.css">    <!--Un enlace entre este archivo y el de estilos CSS-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   <!--Un enlace para poder usar los iconos de Font Awesome-->
 </head>
 
-<!--Todo lo que se va a mostrar en la página va dentro de la etiqueta "body"-->
-<body>
 
-	<!--Cabecera, contiene los botones de registro e inicio de sesión-->
+<body>
+	<!--Cabecera, contiene los botones de registro e inicio de sesión si el usuario no inició sesión, si lo hizo, se muestra su nombre y un botón de cerrar sessión-->
 	<header id="cabecera_principal">
         <?php
-            if (isset($_SESSION['id']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {   //Verifica que la variable superglobal "$_SESSION['id']" no esté vacía
+            if (isset($_SESSION['id']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {   //Verifica si el usuario inició sesión
                 $tu_id = $_SESSION['id'];
-                if ($_SESSION['rol'] == 1) {
+                if ($_SESSION['rol'] == 1) {    //Verifica si el usuario tiene como rol administrador
                     echo "<div class='user'>¡Hola, <b>" . $_SESSION['nombre'] . "</b>[admin]!<span class='a'><a href='codigo/cerrar_sesion.php'><i class='fa fa-sign-out'></i></a></span></div>";
                 } else {
                     echo "<div class='user'>¡Hola, <b>" . $_SESSION['nombre'] . "</b>!<span class='a'><a href='codigo/cerrar_sesion.php'><i class='fa fa-sign-out'></i></a></span></div>";  //Si no lo está, muestra dentro de la cabecera el siguiente mensaje, con su correspondiente etiqueta HTML
@@ -34,11 +34,19 @@
         ?>
 	</header>
 
+    <!--Carga una barra de navegación debajo de la cabecera si el usuario está conectado-->
     <?php
         if (isset($_SESSION['id']) && isset($_SESSION['nombre']) && isset($_SESSION['rol'])) {
             ?>
                 <nav class="navegacion">
-                    <button id="boton_publi" onclick="location.href='crear_publi.php'">Crear publicación</button>
+                    <a href="#Perfil">Editar perfil</a>
+                    <a href="mispublis.php">Mis publicaciones</a>
+                    <a href="crear_publi.php">Crear publicación</a>
+                    <?php
+                        if ($_SESSION['rol'] != 2) {    //Si el rol del usuario es distinto al normal, carga opciones que sólo pueden ver los admin y el equipo médico
+                            echo "<a href='listadadores.php'>Aceptar dadores</a>";
+                        }
+                    ?>
                 </nav>
             <?php
         }
@@ -55,11 +63,13 @@
 		<a title="Dalevida" href="https://dalevida.org.ar/donde-donar-sangre/"> <img  src="img/Gota invertida.png" alt="Dalevida" /></a>
 	</aside>
 
+    <!--Contenido principal de la página-->
     <section>
         <?php
             include("conexion.php");
 
-            $query = "SELECT * FROM publicaciones INNER JOIN factores INNER JOIN hospitales ON publicaciones.FACTOR_ID=factores.FACTOR_ID AND publicaciones.HOS_ID=hospitales.HOS_ID WHERE PUB_ESTADO=1";
+            //Ejecuta una consulta SQL para imprimir las publicaciones
+            $query = "SELECT * FROM publicaciones INNER JOIN factores INNER JOIN hospitales ON publicaciones.FACTOR_ID=factores.FACTOR_ID AND publicaciones.HOS_ID=hospitales.HOS_ID WHERE PUB_ESTADO=1 AND PUB_DADORES_CANT>0";
 
             $sql = $conexion->query($query);
             while ($row = $sql->fetch_assoc()) {
@@ -105,8 +115,8 @@
                     </div>
                 <?php
             }
-            $sql->free();
-            $conexion->close();
+            $sql->free();   //Libera el espacio en memoria usado por la variable "sql"
+            $conexion->close();     //Cierra la conexión con la BD
         ?>
     </section>
 	

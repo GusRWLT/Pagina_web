@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="estilos/verificacion.css">
 </head>
 <body>
+    <!--Cabecera de la página-->
     <header id="cabecera_principal">
         <button id="boton_header" onclick="location.href='ingreso.php';">Iniciar sesión</button>
         <button id="boton_header" onclick="location.href='registro.php';">Registrarse</button>

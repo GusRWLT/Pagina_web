@@ -25,6 +25,7 @@
         mysqli_close($conexion);
     }
 
+    //Carga de datos de hospitales en un ComboBox
     function combo_hospital() {
         include("conexion.php");
 

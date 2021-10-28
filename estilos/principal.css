@@ -112,11 +112,29 @@
                 color: white;
                 border-radius: 5px;
                 cursor: pointer;
+                padding: 5px;
             }
 
             .navegacion {
-                margin-top: 10px;
-                margin-left: 10px;
+                background-color: white;
+                padding: 9px 0px;
+                border-bottom-style: solid;     /*Agrega un borde inferior a la cabecera con la propiedad "solid"*/
+                border-width: 3px;      /*Define el grosor del borde*/
+                border-color: skyblue;
+                box-shadow: grey 0px 5px 10px;
+            }
+
+            .navegacion a {
+                text-decoration: none;
+                color: black;
+                padding: 10px;
+                /*margin-left: 10px;*/
+            }
+
+            .navegacion a:hover {
+                background-color: skyblue;
+                padding: 10px;
+                cursor: pointer;
             }
 
             #boton_publi {
@@ -154,4 +172,51 @@
 
             .cont_botones {
                 text-align: center;
+            }
+
+            /*CSS perteneciente al archivo "mispublis.php"*/
+            #btn_admin {
+                width: 95px;
+                margin-bottom: 8px;
+                color: white;
+                background-color: red;
+                border-color: red;
+                border-style: solid;
+                border-radius: 5px;
+                cursor: pointer;
+                padding: 5px
+            }
+
+            /*CSS perteneciente al archivo "listadadores.php"*/
+            .dadores {
+                margin: 0 auto;
+                width: 450px;
+                background-color: rgba(255, 255, 255, 0.897);
+                padding: 10px;
+                border-radius: 5px;
+            }
+    
+            th, td {
+                text-align: left;
+                padding-right: 100px;
+            }
+    
+            .btn_dadores {
+                text-align: center;
+                margin-top: 10px;
+            }
+    
+            .btn_dador {
+                color: white;
+                background-color: red;
+                padding: 5px;
+                border-style: solid;
+                border-color: red;
+                border-radius: 5px;
+                width: 100px;
+                margin-right: 10px;
+            }
+
+            .cont_dadores {
+                margin-top: 20px;
             }
