@@ -69,21 +69,21 @@
             include("conexion.php");
 
             //Ejecuta una consulta SQL para imprimir las publicaciones
-            $query = "SELECT * FROM publicaciones INNER JOIN factores INNER JOIN hospitales ON publicaciones.FACTOR_ID=factores.FACTOR_ID AND publicaciones.HOS_ID=hospitales.HOS_ID WHERE PUB_ESTADO=1 AND PUB_DADORES_CANT>0";
+            $consulta = "SELECT * FROM publicaciones INNER JOIN factores INNER JOIN hospitales ON publicaciones.FACTOR_ID=factores.FACTOR_ID AND publicaciones.HOS_ID=hospitales.HOS_ID WHERE PUB_ESTADO=1 AND PUB_DADORES_CANT>0";
 
-            $sql = $conexion->query($query);
-            while ($row = $sql->fetch_assoc()) {
+            $resultado = $conexion->query($consulta);
+            while ($fila = $resultado->fetch_assoc()) {
                 
-                $pub_id = $row['PUB_ID'];
-                $usu_id = $row['USU_ID'];
-                $pub_apell = $row['PUB_APELLIDO'];
-                $pub_nomb = $row['PUB_NOMBRE'];
-                $pub_dni = $row['PUB_DNI'];
-                $pub_factor = $row['FACTOR_DESC'];
-                $pub_hosp = $row['HOS_NOMBRE'];
-                $pub_cant = $row['PUB_DADORES_CANT'];
-                $pub_fecha = $row['PUB_FECHA'];
-                $pub_fech_lim = $row['PUB_FECHA_LIM'];
+                $pub_id = $fila['PUB_ID'];
+                $usu_id = $fila['USU_ID'];
+                $pub_apell = $fila['PUB_APELLIDO'];
+                $pub_nomb = $fila['PUB_NOMBRE'];
+                $pub_dni = $fila['PUB_DNI'];
+                $pub_factor = $fila['FACTOR_DESC'];
+                $pub_hosp = $fila['HOS_NOMBRE'];
+                $pub_cant = $fila['PUB_DADORES_CANT'];
+                $pub_fecha = $fila['PUB_FECHA'];
+                $pub_fech_lim = $fila['PUB_FECHA_LIM'];
 
                 if ($pub_cant > 1) {
                     $dadores_label = "dadores";
@@ -115,7 +115,7 @@
                     </div>
                 <?php
             }
-            $sql->free();   //Libera el espacio en memoria usado por la variable "sql"
+            $resultado->free();   //Libera el espacio en memoria usado por la variable "sql"
             $conexion->close();     //Cierra la conexión con la BD
         ?>
     </section>
