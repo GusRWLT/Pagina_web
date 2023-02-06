@@ -1,0 +1,81 @@
+body {
+    margin: 0;      /*Quita por defecto todos los márgenes del documento*/
+    background-image: url("../img/logo donar.png");   /*Cargo una imagen de fondo*/
+    background-size: 700px 700px;
+    background-repeat: no-repeat;   /*Esto hace que no se cree un efecto mosaico*/
+    background-position: center;
+    background-attachment: fixed;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+}
+
+#boton_header {
+    padding: 5px;
+    border-style: solid;
+    border-color: skyblue;      /*Color del borde*/
+    border-radius: 6px;     /*Bordes redondeados*/
+    background-color: white;      /*Cambia el color de fondo*/
+    width: 150px;       /*El largo del objeto (en píxeles)*/
+    margin-right: 10px;     /*Define la distancia entre un objeto y otro por el lado derecho*/
+    transition: 0.2s;
+}
+
+#boton_header:hover {   /*"hover" es la propiedad cuando se le pasa el mouse por encima*/
+    background-color: rgb(44, 168, 218);
+    border-color: rgb(44, 168, 218);
+    cursor: pointer;
+    box-shadow: grey 0px 0px 4px;
+}
+
+#cabecera_principal {
+    background-color: white;
+    text-align: center;     /*Centro los elementos dentro de la cabecera*/
+    padding-top: 15px;
+    padding-bottom: 15px;   /*Aumenta el tamaño vertical de la cabecera. INVESTIGAR BIEN "PADDING" y "MARGIN" PORQUE SE VA A USAR MUCHO*/
+    border-bottom-style: solid;     /*Agrega un borde inferior a la cabecera con la propiedad "solid"*/
+    border-width: 3px;      /*Define el grosor del borde*/
+    border-color: skyblue;
+    box-shadow: grey 0px 5px 10px;
+}
+
+#mensaje {
+    background-color: rgba(255, 255, 255, 0.753);
+    text-align: center;
+    font-size: large;
+    margin-top: 10%;
+    padding: 100px;
+}
+
+h1 {
+    font-size: 150%;
+}
+
+h2 {
+    font-size: 120%;
+}
+
+/*CCS para la barra de navegación*/
+.navegacion {
+    background-color: white;
+    padding: 9px 0px;
+    border-bottom-style: solid;     /*Agrega un borde inferior a la cabecera con la propiedad "solid"*/
+    border-width: 3px;      /*Define el grosor del borde*/
+    border-color: skyblue;
+    box-shadow: grey 0px 5px 10px;
+}
+
+.navegacion a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    /*margin-left: 10px;*/
+}
+
+.navegacion a:hover {
+    background-color: skyblue;
+    padding: 10px;
+    cursor: pointer;
+}

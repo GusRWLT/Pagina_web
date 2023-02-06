@@ -1,0 +1,222 @@
+/*Los que empiezan por # fueron llamados por el id del objeto y los que empiezan por . lo hacen por la clase. Si sólo es el nombre de la etiqueta, afecta a todos los objetos que la usen*/
+            body {
+                margin: 0;      /*Quita por defecto todos los márgenes del documento*/
+                background-image: url("../img/logo donar.png");   /*Cargo una imagen de fondo*/
+                background-size: 700px 700px;
+                background-repeat: no-repeat;   /*Esto hace que no se cree un efecto mosaico*/
+                background-position: center;
+                background-attachment: fixed;
+            }
+
+            #boton_header {
+                padding: 5px;
+                border-style: solid;
+                border-color: skyblue;      /*Color del borde*/
+                border-radius: 6px;     /*Bordes redondeados*/
+                background-color: white;      /*Cambia el color de fondo*/
+                width: 150px;       /*El largo del objeto (en píxeles)*/
+                margin-right: 10px;     /*Define la distancia entre un objeto y otro por el lado derecho*/
+                transition: 0.2s;
+            }
+
+            #boton_header:hover {   /*"hover" es la propiedad cuando se le pasa el mouse por encima*/
+                background-color: rgb(44, 168, 218);
+                border-color: rgb(44, 168, 218);
+                cursor: pointer;
+                box-shadow: grey 0px 0px 4px;
+            }
+
+            #cabecera_principal {
+                background-color: white;
+                text-align: center;     /*Centro los elementos dentro de la cabecera*/
+                padding-top: 15px;
+                padding-bottom: 15px;   /*Aumenta el tamaño vertical de la cabecera. INVESTIGAR BIEN "PADDING" y "MARGIN" PORQUE SE VA A USAR MUCHO*/
+                border-bottom-style: solid;     /*Agrega un borde inferior a la cabecera con la propiedad "solid"*/
+                border-width: 3px;      /*Define el grosor del borde*/
+                border-color: skyblue;
+                box-shadow: grey 0px 5px 10px;
+                height:35px;
+            }
+
+            #enlaces_ext {
+                float: right;   /*Ubica el elemento al lado derecho sin ocupar todo el espacio horizontal de la página*/
+                padding: 15px;
+                margin-top: 60px;
+            }
+
+            #filtros {
+                padding: 15px;
+            }
+
+            
+            @font-face {    /*Carga un archivo de fuente, viene bien para usar fuentes que no todxs tienen instaladas en su PC*/
+            font-family: "Lucida";      /*Le asigna un nombre a la fuente para referise a ella durante el resto del documento*/
+            src: url("../font/lucida-bright.ttf");     /*La ruta donde se encuentra el archivo de la fuente*/
+            }
+            
+
+            * {     /*Afecta a todos los elementos del documento*/
+                font-family: Arial, Helvetica, sans-serif;      /*El tipo de fuente*/
+                font-size: 100%;
+            }
+
+            #publicaciones {
+                background-image: url("../img/tabla.png");     /*Carga la imagen de fondo de las publicaciones. Los archivos no deberían de tener espacios ni tildes*/
+                background-size: 300px;
+                background-position: center;
+                float: left;    /*Lo mismo que el de #enlaces, pero a la izquierda*/
+                margin: 10px;
+                height: 290px;
+                width: 215px;
+                padding-bottom: 10px;
+            }
+
+            #btn_donar {
+                text-align: center;
+            }
+
+            #datos_publi {
+                padding-top: 85px;
+            }
+            
+            select {
+                background-color: white;
+                border-style: solid;
+                border-radius: 5px;
+            }
+
+            .user {
+                margin-top: 5px;
+                text-align: right;
+                margin-right: 20px;
+                color: skyblue;
+            }
+
+            span.a {
+                display: inline;
+                margin-left: 20px;
+                font-size: 25px;
+                height: 30px;
+                vertical-align: middle;
+            }
+
+            span.a:hover {
+                color: rgb(0, 181, 253);
+                cursor: pointer;
+            }
+
+            #donar {
+                background-color: rgb(238, 26, 26);
+                border-color: rgb(238, 26, 26);
+                border-style: solid;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+                padding: 5px;
+            }
+
+            .navegacion {
+                background-color: white;
+                padding: 9px 0px;
+                border-bottom-style: solid;     /*Agrega un borde inferior a la cabecera con la propiedad "solid"*/
+                border-width: 3px;      /*Define el grosor del borde*/
+                border-color: skyblue;
+                box-shadow: grey 0px 5px 10px;
+            }
+
+            .navegacion a {
+                text-decoration: none;
+                color: black;
+                padding: 10px;
+                /*margin-left: 10px;*/
+            }
+
+            .navegacion a:hover {
+                background-color: skyblue;
+                padding: 10px;
+                cursor: pointer;
+            }
+
+            #boton_publi {
+                background-color: skyblue;
+                border-color: skyblue;
+                border-style: solid;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .cont_donar {
+                padding-top: 20px;
+                margin: 0 auto;
+                width: 800px;
+            }
+
+            .requisitos {
+                background-color: rgb(255, 36, 36);
+                color: white;
+                padding: 5px;
+                border-radius: 5px;
+            }
+
+            .btn_donar {
+                margin-left: 10px;
+                margin-top: 15px;
+                width: 90px;
+                border-style: solid;
+                border-color: red;
+                background-color: red;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .cont_botones {
+                text-align: center;
+            }
+
+            /*CSS perteneciente al archivo "mispublis.php"*/
+            #btn_admin {
+                width: 95px;
+                margin-bottom: 8px;
+                color: white;
+                background-color: red;
+                border-color: red;
+                border-style: solid;
+                border-radius: 5px;
+                cursor: pointer;
+                padding: 5px
+            }
+
+            /*CSS perteneciente al archivo "listadadores.php"*/
+            .dadores {
+                margin: 0 auto;
+                width: 450px;
+                background-color: rgba(255, 255, 255, 0.897);
+                padding: 10px;
+                border-radius: 5px;
+            }
+    
+            th, td {
+                text-align: left;
+                padding-right: 100px;
+            }
+    
+            .btn_dadores {
+                text-align: center;
+                margin-top: 10px;
+            }
+    
+            .btn_dador {
+                color: white;
+                background-color: red;
+                padding: 5px;
+                border-style: solid;
+                border-color: red;
+                border-radius: 5px;
+                width: 100px;
+                margin-right: 10px;
+            }
+
+            .cont_dadores {
+                margin-top: 20px;
+            }
