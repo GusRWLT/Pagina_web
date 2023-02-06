@@ -38,7 +38,7 @@
             ?>
                 <nav class="navegacion">
                     <a href="index.php">Inicio</a>
-                    <a href="#Perfil">Editar perfil</a>
+                    <a href="editar_usu.php">Editar perfil</a>
                     <a href="mispublis.php">Mis publicaciones</a>
                     <a href="crear_publi.php">Crear publicación</a>
                     <?php
