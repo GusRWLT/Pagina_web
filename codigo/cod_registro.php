@@ -27,12 +27,12 @@
                     if ($resultado->num_rows == 0) {    //Cuenta la cantidad de registros obtenidos por la consulta, si son igual a 0 significa que no hay usuarios con los mismos datos
                         $hash = md5(rand(0,1000));      //Genera un hash de 32 caracteres de forma aleatoria
                         //Procedo a guardar los datos en la BD
-                        $query = "INSERT INTO usuarios (USU_APELLIDO, USU_NOMBRE, USU_DNI, USU_TRAMIT, USU_FECHA_NAC, LOC_ID, USU_EMAIL, USU_TEL, FACTOR_ID, USU_PASS, USU_ESTADO, USU_FECHA_REG, ROL_ID, USU_HASH) VALUES ('$apellido', '$nombre', '$dni', '$dni_tramite', '$fecha_nac', '$localidad', '$email', '$tel', '$factor', '$pass', 1, CURDATE(), 2, '$hash')";
+                        $query = "INSERT INTO usuarios (USU_APELLIDO, USU_NOMBRE, USU_DNI, USU_TRAMIT, USU_FECHA_NAC, LOC_ID, USU_EMAIL, USU_TEL, FACTOR_ID, USU_PASS, USU_ESTADO, USU_FECHA_REG, ROL_ID, USU_HASH) VALUES ('$apellido', '$nombre', '$dni', '$dni_tramite', '$fecha_nac', '$localidad', '$email', '$tel', '$factor', '$pass', 2, CURDATE(), 2, '$hash')";
                         if ($conexion->query($query)) {     //Ejecuta la consulta de arriba y comprueba que todo haya salido bien
-                            email_valid($email, $hash);     //Llamo a la función "email_valid" creada más abajo
+                            //email_valid($email, $hash);     //Llamo a la función "email_valid" creada más abajo
                             //include("../email.php");
                             //$msg_error = "Registro realizado con éxito.";
-                            //header("location:../registro.php");
+                            header("location:../ingreso.php");
                         } else {
                             echo "Error: " . $query . "<b>" . $conexion->error;     //Imprime un mensaje de error con su código pasa saber dónde se encuentra el problema
                         }
