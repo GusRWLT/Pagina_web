@@ -76,9 +76,9 @@
         <!--Imprime un mensaje de error si existe-->
         <div class="alerta">
             <?php
-                if (isset($_SESSION['msj'])) {    //Comprueba que la variable no esté vacía
-                    echo $_SESSION['msj'];    //Imprime el mensaje de error
-                    $_SESSION['msj'] = NULL;  //Borro el contenido de la varible
+                if (isset($_SESSION['error'])) {    //Comprueba que la variable no esté vacía
+                    echo $_SESSION['error'];    //Imprime el mensaje de error
+                    $_SESSION['error'] = NULL;  //Borro el contenido de la varible
                 }
             ?>
         </div>
