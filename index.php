@@ -67,9 +67,27 @@
     <section>
         <?php
             include("conexion.php");
+	    include("consultas.php");
+	
+	?>
+	    <!--Combobox para filtrar por hospitales-->
+            <form action="codigo/cod_buscar_hosp.php" method="POST" class="buscar">
+                <select name="hospital" id="hospital">
+                    <?php combo_hospital() ?>
+                </select>
+
+                <input type="submit" name="buscar" class="btn_buscar" value="Buscar">
+            </form>
+        <?php
 
             //Ejecuta una consulta SQL para imprimir las publicaciones
-            $consulta = "SELECT * FROM publicaciones INNER JOIN factores INNER JOIN hospitales ON publicaciones.FACTOR_ID=factores.FACTOR_ID AND publicaciones.HOS_ID=hospitales.HOS_ID WHERE PUB_ESTADO=1 AND PUB_DADORES_CANT>0";
+            if (isset($_GET['hospital'])) {     //Pregunto si existe el parametro "hospital" en la URL
+                $hospital = $_GET['hospital'];  //Guardo el valor del parametro en una variable
+                $consulta = "SELECT * FROM publicaciones INNER JOIN factores INNER JOIN hospitales ON publicaciones.FACTOR_ID=factores.FACTOR_ID AND publicaciones.HOS_ID=hospitales.HOS_ID WHERE PUB_ESTADO=1 AND PUB_DADORES_CANT>0 AND publicaciones.HOS_ID=$hospital";
+            }
+            else {
+                $consulta = "SELECT * FROM publicaciones INNER JOIN factores INNER JOIN hospitales ON publicaciones.FACTOR_ID=factores.FACTOR_ID AND publicaciones.HOS_ID=hospitales.HOS_ID WHERE PUB_ESTADO=1 AND PUB_DADORES_CANT>0";
+            }
 
             $resultado = $conexion->query($consulta);
             while ($fila = $resultado->fetch_assoc()) {
